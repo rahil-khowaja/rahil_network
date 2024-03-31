@@ -28,5 +28,7 @@ Data6 <- Data3 %>%
                                                 unit="days")) %>%
   ungroup()
 
+Data6 <- Data6 %>%
+  mutate(month = month(visit_date))
  
 
