@@ -117,3 +117,48 @@ summarization <- function(Data) {
   return(table)
 }
 summarization(Data6)
+
+# 
+install.packages("DataExplorer")
+library(DataExplorer)
+library(tidyverse)
+Data6 %>%
+  select(Age, Group)%>%
+  create_report(output_file = "final.report",
+                output_dir   = "C:/Users/khowa/Desktop/Studies/rahil_network1",
+                y="Age",
+                report_title="Report")
+
+final_data<-read.csv("C:/Users/khowa/Desktop/Studies/rahil_network1/Book1.csv")
+
+install.packages("GGally")
+library(GGally)
+ggpairs(final_data)
+ggcorr(final_data)
+ggally_compare(final_data)
+library(ggplot2)
+
+ggplot(final_data, aes(x = HR_OS, y = HR_PFS)) +
+  geom_point(color = 'blue', size = 5, shape=3) +
+  geom_smooth(method = "lm", se = TRUE, color = "red") +  # Add linear regression line
+  facet_wrap(~ Group1) +  
+  labs(title = "PFS and OS",
+       x = "PFS",
+       y = "OS")
+
+# Assuming final_data is your dataset
+cor_matrix <- cor(final_data[c("HR_OS", "SE_OS", "HR_PFS", "SE_PFS")])
+ggcorr(final_data,
+       method = c("pairwise", "pearson"),
+       cor_matrix = NULL,
+       nbreaks = NULL,
+       digits = 2,
+       name = "Rahil",
+       geom="text",
+       low = "green",
+       mid = "orange",
+       high = "red",
+       label_round = TRUE
+)
+
+ggally_density(final_data, aes(x=HR_PFS, y=SE_PFS))

@@ -1,0 +1,11 @@
+Package: mylibrary
+Title: converting character to factor variable
+Version: 0.0.0.9000
+Authors@R: 
+    person("Rahil", "Khowaja", , "khowajarahil16@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: This package will convert character variables into factor variables
+License: `No need of licence
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
